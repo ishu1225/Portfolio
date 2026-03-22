@@ -1,48 +1,36 @@
 import { motion } from 'framer-motion';
 import SectionWrapper, { SectionTitle } from '../components/SectionWrapper';
-import { FiExternalLink, FiAward, FiCode, FiUsers, FiStar } from 'react-icons/fi';
+import { FiExternalLink } from 'react-icons/fi';
 
 const certifications = [
   {
-    title: 'Machine Learning',
-    org: 'Coursera (Stanford)',
-    year: '2025',
-    link: '#',
-  },
-  {
-    title: 'Python Programming',
-    org: 'Udemy',
+    title: 'Bits and Bytes of Computing',
+    org: 'Coursera (Google)',
     year: '2024',
-    link: '#',
+    link: 'https://coursera.org/share/d07d56eda1c4678b3896139bc7af1774',
+    // Updated image link because previous was broken
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop',
   },
   {
-    title: 'Cloud Fundamentals',
-    org: 'AWS',
-    year: '2025',
-    link: '#',
-  },
-];
-
-const achievements = [
-  {
-    icon: <FiCode size={18} />,
-    title: 'Competitive Coding',
-    desc: 'Solved 500+ problems on LeetCode and other platforms',
+    title: 'Fundamentals of Computer Networks',
+    org: 'Coursera (Google)',
+    year: '2024',
+    link: 'https://coursera.org/share/be6510c0418b898d8c53bc214963cd11',
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=600&auto=format&fit=crop',
   },
   {
-    icon: <FiUsers size={18} />,
-    title: 'Hackathon Finalist',
-    desc: 'Top finalist in multiple university-level hackathons',
+    title: 'Hardware and Operating System',
+    org: 'Coursera (Google)',
+    year: '2024',
+    link: 'https://www.coursera.org/account/accomplishments/verify/07MPVOO16ADL?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop',
   },
   {
-    icon: <FiStar size={18} />,
-    title: 'Technical Competitions',
-    desc: 'Participated and won prizes in coding competitions',
-  },
-  {
-    icon: <FiAward size={18} />,
-    title: 'Academic Excellence',
-    desc: 'Consistent academic performance with distinction',
+    title: 'Competitive Programming Training',
+    org: 'Training',
+    year: '2024',
+    link: 'https://drive.google.com/file/d/1TeABwcr_EeC2yd3Ci8wXXlqDPkKgPlDs/view?usp=sharing',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop',
   },
 ];
 
@@ -50,78 +38,48 @@ export default function Certifications() {
   return (
     <SectionWrapper id="certifications">
       <SectionTitle
-        title="Certifications & Achievements"
-        subtitle="Credentials and milestones from my journey in tech"
+        title="Certifications"
+        subtitle="Credentials from my learning journey in tech"
       />
 
-      <div className="grid md:grid-cols-2 gap-10">
-        {/* Certifications Column */}
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--color-accent-light)] mb-6">
-            Certifications
-          </h3>
-          <div className="space-y-4">
-            {certifications.map((cert, i) => (
-              <motion.div
-                key={cert.title}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.4 }}
-                className="glass rounded-xl p-5 group hover:border-[var(--color-accent)]/30 transition-all"
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h4 className="font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-light)] transition-colors">
-                      {cert.title}
-                    </h4>
-                    <p className="text-sm text-[var(--color-text-secondary)] mt-1">{cert.org}</p>
-                    <p className="text-xs text-[var(--color-text-muted)] mt-1">{cert.year}</p>
-                  </div>
-                  <a
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-accent-light)] hover:bg-[var(--color-dark-hover)] transition-colors"
-                  >
-                    <FiExternalLink size={14} />
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Achievements Column */}
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--color-accent-light)] mb-6">
-            Achievements
-          </h3>
-          <div className="space-y-4">
-            {achievements.map((ach, i) => (
-              <motion.div
-                key={ach.title}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.4 }}
-                className="glass rounded-xl p-5 group hover:border-[var(--color-accent)]/30 transition-all"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent-light)] shrink-0 group-hover:bg-[var(--color-accent)]/20 transition-colors">
-                    {ach.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-light)] transition-colors">
-                      {ach.title}
-                    </h4>
-                    <p className="text-sm text-[var(--color-text-secondary)] mt-1">{ach.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {certifications.map((cert, i) => (
+          <motion.a
+            href={cert.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={cert.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ delay: i * 0.1, duration: 0.4 }}
+            className="relative flex flex-col glass rounded-xl h-[280px] group hover:border-[var(--color-accent)] transition-all overflow-hidden cursor-pointer"
+          >
+            {/* Image section */}
+            <div className="h-1/2 w-full overflow-hidden">
+              <img 
+                src={cert.image} 
+                alt={cert.title} 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80"
+              />
+            </div>
+            
+            {/* Text Content */}
+            <div className="p-5 flex-1 flex flex-col justify-between bg-[var(--color-dark-card)] z-10 transition-colors duration-300">
+              <div>
+                <h4 className="font-medium text-[var(--color-text-primary)] leading-tight">
+                  {cert.title}
+                </h4>
+                <p className="text-sm text-[var(--color-accent-light)] mt-2">{cert.org}</p>
+              </div>
+              <div className="flex justify-start items-center mt-4">
+                <span className="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors text-sm flex items-center gap-1 font-medium pb-1 border-b border-transparent group-hover:border-[var(--color-accent)]">
+                  Verify <FiExternalLink size={14} />
+                </span>
+              </div>
+            </div>
+          </motion.a>
+        ))}
       </div>
     </SectionWrapper>
   );

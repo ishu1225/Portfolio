@@ -1,25 +1,16 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper, { SectionTitle } from '../components/SectionWrapper';
-import { FiSend, FiMail, FiDownload } from 'react-icons/fi';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-
-const contactLinks = [
-  { icon: <FiMail size={18} />, label: 'developer@email.com', href: 'mailto:developer@email.com' },
-  { icon: <FaGithub size={18} />, label: 'GitHub', href: 'https://github.com' },
-  { icon: <FaLinkedin size={18} />, label: 'LinkedIn', href: 'https://linkedin.com' },
-];
+import { FiSend, FiDownload } from 'react-icons/fi';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ subject: '', message: '' });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
   const validate = () => {
     const errs = {};
-    if (!form.name.trim()) errs.name = 'Name is required';
-    if (!form.email.trim()) errs.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Invalid email';
+    if (!form.subject.trim()) errs.subject = 'Subject is required';
     if (!form.message.trim()) errs.message = 'Message is required';
     return errs;
   };
@@ -29,8 +20,16 @@ export default function Contact() {
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
+      // Create a Gmail compose link with the form data
+      const recipient = "singhishu1225@gmail.com"; 
+      const subject = encodeURIComponent(form.subject);
+      const body = encodeURIComponent(form.message);
+      
+      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+      window.open(gmailLink, '_blank');
+
       setSubmitted(true);
-      setForm({ name: '', email: '', message: '' });
+      setForm({ subject: '', message: '' });
       setTimeout(() => setSubmitted(false), 4000);
     }
   };
@@ -42,42 +41,28 @@ export default function Contact() {
         subtitle="Have a question or want to work together? I'd love to hear from you"
       />
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div className="flex flex-col items-center gap-6 max-w-xl mx-auto w-full">
         {/* Contact Form */}
         <motion.form
           onSubmit={handleSubmit}
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.5 }}
-          className="glass rounded-2xl p-6 space-y-5"
+          className="glass rounded-2xl p-6 space-y-4 w-full"
         >
           <div>
-            <label className="block text-xs font-medium text-[var(--color-text-muted)] mb-2 uppercase tracking-wider">Name</label>
+            <label className="block text-xs font-medium text-[var(--color-text-muted)] mb-2 uppercase tracking-wider">Subject</label>
             <input
               type="text"
-              value={form.name}
-              onChange={e => setForm({ ...form, name: e.target.value })}
+              value={form.subject}
+              onChange={e => setForm({ ...form, subject: e.target.value })}
               className={`w-full px-4 py-3 rounded-xl bg-[var(--color-dark-bg)]/50 border text-sm text-[var(--color-text-primary)] outline-none transition-colors focus:border-[var(--color-accent)] ${
-                errors.name ? 'border-red-500' : 'border-[var(--color-dark-border)]'
+                errors.subject ? 'border-red-500' : 'border-[var(--color-dark-border)]'
               }`}
-              placeholder="Your name"
+              placeholder="What is this regarding?"
             />
-            {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name}</p>}
-          </div>
-
-          <div>
-            <label className="block text-xs font-medium text-[var(--color-text-muted)] mb-2 uppercase tracking-wider">Email</label>
-            <input
-              type="email"
-              value={form.email}
-              onChange={e => setForm({ ...form, email: e.target.value })}
-              className={`w-full px-4 py-3 rounded-xl bg-[var(--color-dark-bg)]/50 border text-sm text-[var(--color-text-primary)] outline-none transition-colors focus:border-[var(--color-accent)] ${
-                errors.email ? 'border-red-500' : 'border-[var(--color-dark-border)]'
-              }`}
-              placeholder="you@example.com"
-            />
-            {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email}</p>}
+            {errors.subject && <p className="text-xs text-red-400 mt-1">{errors.subject}</p>}
           </div>
 
           <div>
@@ -104,45 +89,22 @@ export default function Contact() {
           </motion.button>
         </motion.form>
 
-        {/* Contact Info */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col gap-5"
+        {/* Download Resume Button */}
+        <motion.a
+          href="https://drive.google.com/file/d/18CKDTsoUUHBgUAuc295uEe6NvfFAL6pq/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full glass rounded-2xl p-4 flex items-center justify-center gap-3 text-[var(--color-accent-light)] hover:border-[var(--color-accent)]/30 transition-all group cursor-pointer"
         >
-          <div className="glass rounded-2xl p-6">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--color-accent-light)] mb-4">
-              Direct Contact
-            </h3>
-            <div className="space-y-3">
-              {contactLinks.map(c => (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[var(--color-dark-bg)]/50 border border-[var(--color-dark-border)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-light)] hover:border-[var(--color-accent)]/30 transition-colors"
-                >
-                  <span className="royal-icon">{c.icon}</span>
-                  {c.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <motion.a
-            href="/resume.pdf"
-            download
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="glass rounded-2xl p-6 flex items-center justify-center gap-3 text-[var(--color-accent-light)] hover:border-[var(--color-accent)]/30 transition-all group"
-          >
-            <FiDownload size={20} className="group-hover:translate-y-0.5 transition-transform" />
-            <span className="font-medium">Download Resume</span>
-          </motion.a>
-        </motion.div>
+          <FiDownload size={20} className="group-hover:translate-y-0.5 transition-transform" />
+          <span className="font-medium">Download Resume</span>
+        </motion.a>
       </div>
     </SectionWrapper>
   );

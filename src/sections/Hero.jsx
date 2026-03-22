@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { FiArrowDown, FiDownload, FiMail } from 'react-icons/fi';
-import { FaCrown } from 'react-icons/fa';
+import { FiArrowDown, FiDownload, FiMail, FiExternalLink } from 'react-icons/fi';
+import profilePic from '../../images/profile picture.jpeg';
 
 const roles = ['Software Developer', 'Problem Solver', 'AI Enthusiast', 'Tech Learner'];
 
@@ -52,29 +52,47 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide border border-[var(--color-dark-border)] text-[var(--color-accent-light)] bg-[var(--color-accent)]/5"
-          >
-            ✦ Available for Internships & Placements
-          </motion.div>
+          <div className="flex flex-col items-center text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-block mb-8 md:mb-10 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide border border-[var(--color-dark-border)] text-[var(--color-accent-light)] bg-[var(--color-accent)]/5"
+            >
+              ✦ Available for Internships & Placements
+            </motion.div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-[family-name:var(--font-heading)] leading-tight flex items-center flex-wrap gap-2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.1, type: "spring" }}
+              className="w-full flex justify-center mb-10"
+            >
+              <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-[var(--color-accent)] overflow-hidden shadow-[0_0_30px_rgba(255,215,0,0.2)] hover:shadow-[0_0_60px_rgba(255,215,0,0.6)] hover:-translate-y-2 hover:scale-105 transition-all duration-300 cursor-pointer">
+                <img
+                  src={profilePic}
+                  alt="Eshank Singh Profile"
+                  className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-[family-name:var(--font-heading)] leading-tight flex items-center justify-center flex-wrap gap-2 text-center">
             Hi, I'm{' '}
-            <span className="gradient-text">Eshu</span>
-            <FaCrown className="text-3xl sm:text-4xl md:text-6xl text-yellow-400 royal-icon relative -top-1 md:-top-2" />
+            <span className="gradient-text">Eshank Singh</span>
           </h1>
 
-          <p className="mt-4 text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl">
-            Computer Science Student{' '}
-            <span className="text-[var(--color-text-muted)]">|</span>{' '}
-            Aspiring Software Engineer
+          <p className="mt-4 text-xl md:text-2xl font-semibold text-[var(--color-accent-light)] max-w-2xl text-center mx-auto tracking-wide">
+            Data Analyst | AI System Builder
+          </p>
+
+          <p className="mt-2 text-lg text-[var(--color-text-secondary)] max-w-2xl text-center mx-auto tracking-wide font-medium">
+            Building scalable AI & secure systems using Python & ML
           </p>
 
           {/* Typing effect */}
-          <div className="mt-6 h-8 flex items-center">
+          <div className="mt-6 h-8 flex items-center justify-center">
             <span className="text-lg text-[var(--color-text-muted)]">{'> '}</span>
             <span className="text-lg text-[var(--color-accent-light)] font-mono">{text}</span>
             <motion.span
@@ -84,14 +102,10 @@ export default function Hero() {
             />
           </div>
 
-          <p className="mt-6 text-[var(--color-text-secondary)] max-w-xl leading-relaxed">
-            Passionate about solving complex problems through clean code and innovative technology.
-            I love building impactful software that makes a difference — from AI-powered applications
-            to scalable systems.
-          </p>
+
 
           {/* CTA Buttons */}
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link to="projects" smooth offset={-80} duration={600}>
               <motion.button
                 whileHover={{ scale: 1.03 }}
@@ -104,8 +118,9 @@ export default function Hero() {
             </Link>
 
             <motion.a
-              href="/resume.pdf"
-              download
+              href="https://drive.google.com/file/d/18CKDTsoUUHBgUAuc295uEe6NvfFAL6pq/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="px-6 py-3 rounded-xl border border-[var(--color-dark-border)] text-[var(--color-text-primary)] font-medium text-sm flex items-center gap-2 hover:bg-[var(--color-dark-hover)] transition-all"

@@ -3,6 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import SectionWrapper, { SectionTitle } from '../components/SectionWrapper';
 
+import imgRebalancer from '../../images/investment rebalancer.avif';
+import imgVault from '../../images/secure vault.jpg';
+import imgLandUse from '../../images/Land Use analysis.jpg';
+import imgOsBiometric from '../../images/Os biometric auth.webp';
+import imgPortfolio from '../../images/Portfolio website.png';
+
 const projects = [
   {
     title: 'AI Investment Rebalancer',
@@ -10,8 +16,9 @@ const projects = [
     description: 'An AI-powered tool that analyzes portfolio allocations and suggests optimal rebalancing strategies using machine learning models trained on historical market data.',
     tech: ['Python', 'TensorFlow', 'Flask', 'React'],
     tags: ['AI / ML'],
-    github: 'https://github.com',
+    github: 'https://github.com/ARCHI-DUBEY/Rebalancer',
     demo: '',
+    image: imgRebalancer,
     features: ['ML-based prediction engine', 'Real-time market data', 'Risk assessment scoring', 'Portfolio visualization'],
   },
   {
@@ -20,19 +27,21 @@ const projects = [
     description: 'A secure file vault application using facial recognition for authentication. Implements multi-factor security with liveness detection to prevent spoofing attacks.',
     tech: ['Python', 'OpenCV', 'Flask', 'SQLite'],
     tags: ['Security'],
-    github: 'https://github.com',
+    github: 'https://github.com/ishu1225/ML-based-Aadhar-Authetication-Paper',
     demo: '',
+    image: imgVault,
     features: ['Face recognition auth', 'Liveness detection', 'Encrypted file storage', 'Activity logging'],
   },
   {
-    title: 'Hand Sign Detection',
-    problem: 'Communication barriers between deaf and hearing communities.',
-    description: 'A real-time hand sign language detection system using computer vision and deep learning to translate sign language gestures into text, enabling seamless communication.',
-    tech: ['Python', 'MediaPipe', 'TensorFlow', 'OpenCV'],
-    tags: ['AI / ML'],
-    github: 'https://github.com',
+    title: 'India Land Use Analysis',
+    problem: 'Need for comprehensive analysis of land use patterns across India for better planning.',
+    description: 'A data analysis project that explores and visualizes land use data in India, identifying trends and insights useful for urban planning and agriculture.',
+    tech: ['Python', 'Pandas', 'Matplotlib', 'Data Analysis'],
+    tags: ['Data Analysis'],
+    github: 'https://github.com/ishu1225/India-land-Use-Analysis',
     demo: '',
-    features: ['Real-time detection', '26+ sign recognition', 'Sentence formation', '95%+ accuracy'],
+    image: imgLandUse,
+    features: ['Data visualization', 'Trend analysis', 'Comprehensive reporting', 'Geospatial insights'],
   },
   {
     title: 'OS Biometric Auth',
@@ -40,8 +49,9 @@ const projects = [
     description: 'An OS-level biometric authentication system integrating fingerprint and face recognition modules with the operating system login pipeline for enhanced system security.',
     tech: ['C++', 'Python', 'Linux', 'PAM'],
     tags: ['System'],
-    github: 'https://github.com',
+    github: 'https://github.com/ishu1225/OSlevelbiometric',
     demo: '',
+    image: imgOsBiometric,
     features: ['Fingerprint integration', 'Face recognition', 'PAM module', 'Fallback password'],
   },
   {
@@ -52,11 +62,12 @@ const projects = [
     tags: ['Web Dev'],
     github: 'https://github.com',
     demo: '',
+    image: imgPortfolio,
     features: ['Dark/Light mode', 'Smooth animations', 'Responsive design', 'SEO optimized'],
   },
 ];
 
-const filters = ['All', 'AI / ML', 'Web Dev', 'Security', 'System'];
+const filters = ['All', 'Data Analysis', 'AI / ML', 'Web Dev', 'Security', 'System'];
 
 export default function Projects() {
   const [active, setActive] = useState('All');
@@ -97,8 +108,16 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="glass rounded-2xl p-6 group hover:border-[var(--color-accent)]/30 transition-all"
+              className="glass rounded-2xl p-6 group hover:border-[var(--color-accent)]/50 hover:shadow-[0_8px_30px_rgba(255,215,0,0.15)] hover:-translate-y-2 transition-all duration-300 ease-out"
             >
+              <div className="mb-4 overflow-hidden rounded-xl">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
               {/* Header */}
               <div className="flex items-start justify-between mb-3">
                 <h3 className="text-lg font-semibold font-[family-name:var(--font-heading)] text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-light)] transition-colors">

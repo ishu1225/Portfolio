@@ -7,8 +7,8 @@ const interests = [
   { icon: <FiCpu />, label: 'Artificial Intelligence' },
   { icon: <FiLayers />, label: 'System Design' },
   { icon: <FiServer />, label: 'Operating Systems' },
-  { icon: <FiDatabase />, label: 'Backend Development' },
-  { icon: <HiOutlineSparkles />, label: 'Distributed Systems' },
+  { icon: <FiDatabase />, label: 'Databases' },
+  { icon: <HiOutlineSparkles />, label: 'Data Analysis' },
 ];
 
 export default function About() {
@@ -24,7 +24,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           className="glass rounded-2xl p-6"
         >
@@ -35,10 +35,10 @@ export default function About() {
             <h3 className="text-lg font-semibold font-[family-name:var(--font-heading)]">Introduction</h3>
           </div>
           <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-            I'm a Computer Science student passionate about building scalable, efficient software systems.
-            I enjoy diving deep into algorithms, exploring new technologies, and creating tools that solve
-            real-world problems. From AI-powered applications to system-level programming, I love the
-            challenge of turning complex ideas into clean, functional code.
+            I'm a Data Analyst passionate about uncovering insights from data and building efficient systems.
+            I enjoy diving deep into data, exploring new technologies, and creating tools that solve
+            real-world problems. From data visualization to machine learning, I love the
+            challenge of turning complex datasets into actionable insights.
           </p>
         </motion.div>
 
@@ -46,7 +46,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           className="glass rounded-2xl p-6"
         >
@@ -56,11 +56,21 @@ export default function About() {
             </div>
             <h3 className="text-lg font-semibold font-[family-name:var(--font-heading)]">Education</h3>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div>
               <p className="text-[var(--color-text-primary)] font-medium">BTech in Computer Science</p>
-              <p className="text-sm text-[var(--color-text-secondary)]">Lovely Professional University</p>
-              <p className="text-xs text-[var(--color-text-muted)] mt-1">Expected Graduation: 2027</p>
+              <p className="text-sm text-[var(--color-text-secondary)]">Lovely Professional University, Jalandhar, Punjab</p>
+              <p className="text-xs text-[var(--color-text-muted)] mt-1">CGPA: 8.5 | Expected Graduation: 2027</p>
+            </div>
+            <div className="pt-3 border-t border-[var(--color-dark-border)]">
+              <p className="text-[var(--color-text-primary)] font-medium">Class 12th</p>
+              <p className="text-sm text-[var(--color-text-secondary)]">VPCS, Bhind, MP</p>
+              <p className="text-xs text-[var(--color-text-muted)] mt-1">Percentage: 94.6%</p>
+            </div>
+            <div className="pt-3 border-t border-[var(--color-dark-border)]">
+              <p className="text-[var(--color-text-primary)] font-medium">Class 10th</p>
+              <p className="text-sm text-[var(--color-text-secondary)]">VPCS, Bhind, MP</p>
+              <p className="text-xs text-[var(--color-text-muted)] mt-1">Percentage: 94.4%</p>
             </div>
           </div>
         </motion.div>
@@ -69,7 +79,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="glass rounded-2xl p-6"
         >
@@ -97,7 +107,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="glass rounded-2xl p-6"
         >
@@ -108,10 +118,10 @@ export default function About() {
             <h3 className="text-lg font-semibold font-[family-name:var(--font-heading)]">Career Vision</h3>
           </div>
           <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-            My goal is to become a well-rounded software engineer who builds systems that impact millions.
-            I'm focused on mastering system design, contributing to open-source, and working on cutting-edge
-            technology — whether it's AI infrastructure, distributed computing, or developer tools. I believe
-            in writing code that's not just functional, but elegant and maintainable.
+            My goal is to become a well-rounded Data Analyst who builds data solutions that impact millions.
+            I'm focused on mastering data architecture, contributing to open-source, and working on cutting-edge
+            analytics — whether it's predictive modeling, big data pipelines, or business intelligence. I believe
+            in writing queries and code that are not just functional, but efficient and maintainable.
           </p>
         </motion.div>
       </div>

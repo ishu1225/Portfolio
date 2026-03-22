@@ -6,6 +6,8 @@ import Skills from './sections/Skills';
 import About from './sections/About';
 import Projects from './sections/Projects';
 import Certifications from './sections/Certifications';
+import Achievements from './sections/Achievements';
+import Blog from './sections/Blog';
 import Contact from './sections/Contact';
 
 export default function App() {
@@ -19,6 +21,8 @@ export default function App() {
           <About />
           <Projects />
           <Certifications />
+          <Achievements />
+          <Blog />
           <Contact />
         </main>
         <Footer />

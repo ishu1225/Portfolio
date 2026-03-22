@@ -10,18 +10,12 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="border-t border-[var(--color-dark-border)] bg-[var(--color-dark-card)]">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <h3 className="text-lg font-bold font-[family-name:var(--font-heading)] gradient-text">
-              &lt;Dev /&gt;
-            </h3>
-            <p className="mt-1 text-sm text-[var(--color-text-muted)]">
-              Building technology that solves real problems.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-4">
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="flex flex-col items-center justify-center gap-4">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--color-accent-light)] tracking-[0.2em]">
+            Direct Contact
+          </h3>
+          <div className="flex items-center justify-center gap-4">
             {socials.map(s => (
               <a
                 key={s.label}
@@ -35,12 +29,6 @@ export default function Footer() {
               </a>
             ))}
           </div>
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-[var(--color-dark-border)] text-center">
-          <p className="text-xs text-[var(--color-text-muted)]">
-            © {new Date().getFullYear()} All rights reserved. Designed & built with ❤️
-          </p>
         </div>
       </div>
     </footer>

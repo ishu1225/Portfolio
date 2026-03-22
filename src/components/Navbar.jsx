@@ -1,23 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiMenuAlt3, HiX } from 'react-icons/hi';
-import { FiSun, FiMoon } from 'react-icons/fi';
-import { useTheme } from './ThemeProvider';
+import { Menu, X, Home, Code, User, Grid, Award, Mail, PenTool } from 'lucide-react';
+
 
 const navLinks = [
-  { to: 'hero', label: 'Home' },
-  { to: 'skills', label: 'Skills' },
-  { to: 'about', label: 'About' },
-  { to: 'projects', label: 'Projects' },
-  { to: 'certifications', label: 'Certifications' },
-  { to: 'contact', label: 'Contact' },
+  { to: 'hero', label: 'Home', icon: Home },
+  { to: 'skills', label: 'Skills', icon: Code },
+  { to: 'about', label: 'About', icon: User },
+  { to: 'projects', label: 'Projects', icon: Grid },
+  { to: 'certifications', label: 'Certifications', icon: Award },
+  { to: 'blog', label: 'Blog', icon: PenTool },
+  { to: 'contact', label: 'Contact', icon: Mail },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { isDark, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -36,46 +35,34 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="hero" smooth duration={600} className="cursor-pointer">
-          <span className="text-xl font-bold font-[family-name:var(--font-heading)] gradient-text">
-            &lt;Dev /&gt;
-          </span>
-        </Link>
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between md:justify-center relative">
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-1">
-          {navLinks.map(link => (
-            <Link
-              key={link.to}
-              to={link.to}
-              spy
-              smooth
-              offset={-80}
-              duration={600}
-              activeClass="!text-[var(--color-accent-light)]"
-              className="px-4 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors rounded-lg cursor-pointer"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <button
-            onClick={toggle}
-            className="ml-4 p-2 rounded-lg text-[var(--color-text-secondary)] hover:text-[var(--color-accent-light)] hover:bg-[var(--color-dark-hover)] transition-colors"
-            aria-label="Toggle theme"
-          >
-            {isDark ? <FiSun size={18} /> : <FiMoon size={18} />}
-          </button>
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                spy
+                smooth
+                offset={-80}
+                duration={600}
+                activeClass="!text-[var(--color-accent-light)] !bg-white/5"
+                className="flex items-center gap-2 px-4 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-white/5 transition-all w-full rounded-full cursor-pointer"
+              >
+                <Icon size={16} />
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Mobile toggle */}
-        <div className="flex md:hidden items-center gap-2">
-          <button onClick={toggle} className="p-2 text-[var(--color-text-secondary)]" aria-label="Toggle theme">
-            {isDark ? <FiSun size={18} /> : <FiMoon size={18} />}
-          </button>
+        <div className="flex md:hidden items-center justify-end w-full">
           <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 text-[var(--color-text-primary)]" aria-label="Menu">
-            {mobileOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
@@ -90,20 +77,24 @@ export default function Navbar() {
             className="md:hidden glass border-t border-[var(--color-dark-border)] overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-1">
-              {navLinks.map(link => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  spy
-                  smooth
-                  offset={-80}
-                  duration={600}
-                  onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-dark-hover)] rounded-lg transition-colors cursor-pointer"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    spy
+                    smooth
+                    offset={-80}
+                    duration={600}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-dark-hover)] rounded-lg transition-colors cursor-pointer"
+                  >
+                    <Icon size={18} />
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
           </motion.div>
         )}
